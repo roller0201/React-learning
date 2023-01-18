@@ -1,5 +1,5 @@
 import React from 'react';
-import Setup from './tutorial/2-useEffect/setup/3-useEffect-fetch-data';
+import Setup from './tutorial/7-prop-drilling/setup/1-prop-drilling';
 
 function App() {
   return (
