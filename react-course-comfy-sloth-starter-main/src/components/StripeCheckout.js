@@ -51,7 +51,7 @@ const CheckoutForm = () => {
   const createPaymentIntent = async () => {
     try {
       const { data } = await axios.post(
-        '/.netlify/functions/create-payment-intent'
+        '/netlify/functions/create-payment-intent'
       );
       JSON.stringify({ cart, shipping_fee, total_amount });
       setClientSecret(data.clientSecret);
@@ -72,6 +72,7 @@ const CheckoutForm = () => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     setProcessing(true);
+    debugger;
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),

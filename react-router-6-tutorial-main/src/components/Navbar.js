@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
+import { cartIcon } from '../icons';
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
   return (
-    <nav className='navbar'>
-      <Link to='/'>Home</Link>
-      <Link to='/about'>About</Link>
-      <Link to='/products'>Products</Link>
+    <nav>
+      <div className='nav-center'>
+        <h3>redux toolkit</h3>
+      </div>
     </nav>
   );
 };

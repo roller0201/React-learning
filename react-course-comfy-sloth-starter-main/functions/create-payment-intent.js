@@ -2,13 +2,14 @@
 require('dotenv').config();
 
 const stripe = require('stripe')(
-  'sk_test_51MXSUFKdJcA5p46ZjCZ5Dg3Pfv6rIo6iDsWuImiz6GbQUwzBxN4snTanvtbJgQbDFDk3RXk4aiEepAIJ2Pv4hhoy00zb0lOjBU'
+  'sk_secret_51MXSUFKdJcA5p46ZjCZ5Dg3Pfv6rIo6iDsWuImiz6GbQUwzBxN4snTanvtbJgQbDFDk3RXk4aiEepAIJ2Pv4hhoy00zb0lOjBU'
 );
 
 exports.handler = async function (event, context) {
+  debugger;
   if (event.body) {
     const { cart, shipping_fee, total_amount } = JSON.parse(event.body);
-    //console.log(cart);
+    console.log(cart);
 
     const calculateOrderAmount = () => {
       return shipping_fee + total_amount;
