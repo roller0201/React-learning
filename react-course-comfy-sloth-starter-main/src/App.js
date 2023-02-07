@@ -13,6 +13,8 @@ import {
   AuthWrapper,
 } from './pages';
 
+console.log(Home);
+
 function App() {
   return (
     <AuthWrapper>
