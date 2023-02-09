@@ -1,11 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import customFetch from '../../utils/axios';
 import {
-  getUserFromLocalStorage,
   addUserToLocalStorage,
+  getUserFromLocalStorage,
   removeUserFromLocalStorage,
 } from '../../utils/localStorage';
+import {
+  loginUserThunk,
+  registerUserThunk,
+  updateUserThunk,
+} from './userThunk';
 
 const initialState = {
   isLoading: false,
@@ -15,25 +19,22 @@ const initialState = {
 
 export const registerUser = createAsyncThunk(
   'user/registerUser',
-  async (user, thunkApi) => {
-    try {
-      const resp = await customFetch.post('/auth/register', user);
-      return resp.data;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.response.data.msg);
-    }
+  async (user, thunkAPI) => {
+    return registerUserThunk('/auth/register', user, thunkAPI);
   }
 );
 
 export const loginUser = createAsyncThunk(
   'user/loginUser',
-  async (user, thunkApi) => {
-    try {
-      const resp = await customFetch.post('/auth/login', user);
-      return resp.data;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.response.data.msg);
-    }
+  async (user, thunkAPI) => {
+    return loginUserThunk('/auth/login', user, thunkAPI);
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'user/updateUser',
+  async (user, thunkAPI) => {
+    return updateUserThunk('/auth/updateUser', user, thunkAPI);
   }
 );
 
@@ -83,10 +84,24 @@ const userSlice = createSlice({
       .addCase(loginUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         toast.error(payload);
+      })
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        const { user } = payload;
+        state.isLoading = false;
+        state.user = user;
+        addUserToLocalStorage(user);
+
+        toast.success(`User Updated!`);
+      })
+      .addCase(updateUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        toast.error(payload);
       });
   },
 });
 
 export const { toggleSidebar, logoutUser } = userSlice.actions;
-
 export default userSlice.reducer;
