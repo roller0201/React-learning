@@ -1,0 +1,118 @@
+.App {
+  text-align: center;
+  overflow-y: auto;
+}
+
+.App-win {
+  margin-top: 32px;
+  height: calc(100vh - 32px);
+  max-height: calc(100vh - 32px);
+}
+
+.Page {
+  padding-left: 68px;
+  padding-right: 4px;
+  overflow-y: auto;
+}
+
+.Page-win {
+  min-height: calc(100vh - 32px);
+  max-height: calc(100vh - 32px);
+  height: calc(100vh - 32px);
+}
+
+.Page-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-left: 4px;
+  padding-top: 12px;
+  padding-bottom: 5px;
+}
+
+.AdditionalMenu {
+  margin-top: auto !important;
+  margin-bottom: 5px !important;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.Config-page {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 12px;
+}
+
+.App-config-paper {
+  padding: 16px;
+}
+
+.Controller-text-field {
+  margin-bottom: 16px !important;
+}
+
+.Stack-row-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.Hide-icon > .MuiButton-endIcon {
+  visibility: hidden;
+  display: none;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+body div .Application-bar {
+  -webkit-app-region: drag;
+  height: 32px;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.Application-bar-buttons {
+  -webkit-app-region: no-drag;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/*body {
+  -webkit-app-region: drag;
+}*/
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
