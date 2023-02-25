@@ -1,0 +1,49 @@
+Numerology.Api
+Serilog.Extensions.Logging
+System.Data.SqlClient -> Without whis UOW is not working
+Todo:
+  ✔ Check why we cant reach api from postman @done (1.11.2019, 10:06:26)
+  Note:
+    It looks like issue in postman. I'm not sure why but we cannot reach api from postman. If we use browser we don't have this problem. I'm not sure yet how
+    it will work when calling from angular. 
+  ✔ Add Common elemnts @done (1.11.2019, 10:28:21)
+  ✔ Create DB @done (1.11.2019, 15:42:57)
+  ✔ Use Identity for User and role @done (1.11.2019, 10:28:19)
+  ✔ Create Angular client @done (2.11.2019, 12:48:10)
+  ☐ Create Authorization/Authentication login/register
+  ☐ Add external login
+  ✔ Add SignalR @done (1.11.2019, 15:13:48)
+  ☐ Add all needed angular packages
+  ✔ Use DDD architecture @done (1.11.2019, 16:06:38)
+  Note:
+    Maybe we can change something with AppUser and UserRole
+  ☐ Auto init database
+  ✔ Create Test project @done (2.11.2019, 12:48:05)
+  ✔ Change repository to auto detecting from wich database app test should use @done (1.11.2019, 15:40:00)
+  ✔ Add UnitOfWork @done (1.11.2019, 10:28:08)
+  ✔ Divide IRepository to two diffrent interfaces @done (1.11.2019, 10:07:39)
+  ☐ Add Anty-Foreign-Token
+  ☐ Add storing user data on client side
+  ☐ Add Privileges to roles
+  ☐ Add Exception to privileges in roles
+  ☐ Add UI for user and role managment
+  ☐ Add base settings for user like change theme, or of audio 
+  ☐ Add global parameters
+  ✔ Add logger @done (1.11.2019, 10:07:33)
+  ☐ Add logger to db
+  ☐ Change location of ApplicationPermissions
+  ☐ Add User module 
+  Note:
+    We need to add reference from User.Domain to Database. I'm not sure how to do it cleanly
+  ✔ Change IAccountManager logic @done (2.11.2019, 12:48:15)
+  ✔ Change AccountController logic @done (2.11.2019, 12:48:16)
+  ✘ Change Authorization logic @cancelled (2.11.2019, 12:48:40)
+  ✘ Add layer with VM's @cancelled (1.11.2019, 12:09:55)
+  Note: 
+    https://stackoverflow.com/questions/23648832/viewmodels-in-mvc-mvvm-separation-of-layers-best-practices/23649191
+    Ok, i think i'm gona go with constructor in vm that can take object
+  ☐ Change AutoMapper to something else 
+  ✘ Divide Api project -> One Is responsible only for Authorization/Authentication and the second is Resource api @cancelled (1.11.2019, 12:09:59)
+  ✘ Authorization folder in Numerology.Auth we need to change location to Common @cancelled (1.11.2019, 12:10:16)
+  ☐ Check how we can hit ~/connect/token
+  ☐ It would be nice if we could create a singleton queue that will push our DLog to file
