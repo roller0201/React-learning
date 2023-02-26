@@ -1,0 +1,48 @@
+<div class="row control-box" style="width: 100% !important">
+  <div class="col-md-6">
+    <button mat-raised-button color="primary" style="margin-bottom: 5px; height: 35px !important;" href="javascript:;" (click)="refresh()">
+      <i class="fas fa-sync-alt"></i> Odswiez
+    </button>
+    <mat-table  class="mat-elevation-z8" matSort [dataSource]="namesMat" style="width: 100%; text-align: center !important">
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="centre" style="cursor: pointer !important;">Id</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="centre"> {{element.id}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="cursor: pointer !important;">Nazwa</mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+              </ng-container>
+        <ng-container matColumnDef="value">
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="centre" style="cursor: pointer !important;">Wartość</mat-header-cell>
+              <mat-cell *matCellDef="let element" class="centre" > {{element.value}} </mat-cell>
+            </ng-container>
+        <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef>Akcje</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    
+                  <button mat-button color="primary" (click)="edit(element)"><i class="fa fa-pencil-square-o"></i>Edytuj</button>
+                  </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[8, 12, 15]" showFirstLastButtons></mat-paginator>
+  </div>
+  <div class="col-md-6" style="padding-top: 35px !important;">
+    <mat-card class="example-card" >
+      <mat-card-header>
+        <mat-card-title>Dodaj/edytuj</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field style="margin-right: 5px;">
+          <input matInput type="text" placeholder="Imie" [(ngModel)]="dictionaryToAddOrUpdate.name" (keydown)="onKeydown($event)">
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="saveLetter()">Zapisz</button>
+        <button mat-raised-button color="warn" [disabled]="isDisabledDelete" (click)="deleteLetter(dictionaryToAddOrUpdate.id)">Usuń</button>
+        <button mat-raised-button color="accent" (click)="cancelSaveLetter()">Anuluj</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
